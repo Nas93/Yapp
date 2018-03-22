@@ -14,7 +14,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 public class MainActivity extends YouTubeBaseActivity {
 
     YouTubePlayerView youTubePlayerView;
-    Button b;
+    Button b1,b2;
     YouTubePlayer.OnInitializedListener onInitializedListener;
     EditText e;
     String a;
@@ -25,7 +25,8 @@ public class MainActivity extends YouTubeBaseActivity {
         setContentView(R.layout.activity_main);
 
         e = findViewById(R.id.e1);
-        b = findViewById(R.id.b1);
+        b1 = findViewById(R.id.b1);
+        b2 = findViewById(R.id.b2);
         youTubePlayerView = ( YouTubePlayerView )findViewById(R.id.yv);
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
@@ -39,11 +40,18 @@ public class MainActivity extends YouTubeBaseActivity {
             }
         };
 
-        b.setOnClickListener(new View.OnClickListener() {
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 a = e.getText().toString();
                 youTubePlayerView.initialize(PlayerConfig.API_KEY,onInitializedListener);
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(getIntent());
             }
         });
     }
